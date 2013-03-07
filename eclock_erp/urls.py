@@ -16,5 +16,7 @@ urlpatterns = patterns('',
     url(r'^category-detailed/(?P<id_category>\d+)$', 'locations.views.devolver_categoria', name='category-detailed'),
     url(r'^entry-detailed/(?P<id_entry>\d+)$', 'locations.views.devolver_entrada', name='entry-detailed'),
 
+    url(r'^admin_tools/', include('admin_tools.urls')),
+
     url(r'^admin/', include(admin.site.urls)),
 )
