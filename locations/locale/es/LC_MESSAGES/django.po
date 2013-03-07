@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-18 11:03+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: .\models.py:7
+msgid "Localizaciones"
+msgstr "Localizaciones"
+
+#: .\models.py:11
+msgid "codigo"
+msgstr "Código"
+
+#: .\models.py:11
+msgid "Introduzca el codigo de via"
+msgstr "Introduzca el código de vía"
+
+#: .\models.py:12
+msgid "descripcion"
+msgstr "Descripción"
+
+#: .\models.py:12
+msgid "Introduzca la descripcion de la via"
+msgstr "Introduzca la descripción de la vía"
+
+#: .\models.py:18
+msgid "Via"
+msgstr "Vía"
+
+#: .\models.py:19
+msgid "Vias"
+msgstr "Vías"
+
+#: .\models.py:23 .\models.py:37 .\models.py:50
+msgid "Codigo"
+msgstr ""
+
+#: .\models.py:23
+msgid "Introduzca el codigo del pais"
+msgstr ""
+
+#: .\models.py:24
+msgid "Codigo ISO"
+msgstr ""
+
+#: .\models.py:24
+msgid "Introduzca el codigo ISO"
+msgstr ""
+
+#: .\models.py:25
+msgid "Union Europea"
+msgstr ""
+
+#: .\models.py:25
+msgid "Pertenecea la Union Europea"
+msgstr ""
+
+#: .\models.py:26 .\models.py:38 .\models.py:51
+msgid "Descripcion"
+msgstr ""
+
+#: .\models.py:26
+msgid "Introduzca la descripcion del pais"
+msgstr ""
+
+#: .\models.py:32 .\models.py:39
+msgid "Pais"
+msgstr ""
+
+#: .\models.py:33
+msgid "Paises"
+msgstr ""
+
+#: .\models.py:37
+msgid "Introduzca el codigo de la provincia"
+msgstr ""
+
+#: .\models.py:38
+msgid "Introduzca la descripcion de la provincia"
+msgstr ""
+
+#: .\models.py:39
+msgid "Introduzca el pais"
+msgstr ""
+
+#: .\models.py:45 .\models.py:52
+msgid "Provincia"
+msgstr ""
+
+#: .\models.py:46
+msgid "Provincias"
+msgstr ""
+
+#: .\models.py:50
+msgid "Introduzca el codigo del municipio"
+msgstr ""
+
+#: .\models.py:51
+msgid "Introduzca la descripcion del municipio"
+msgstr ""
+
+#: .\models.py:52
+msgid "Introduzca la provincia"
+msgstr ""
+
+#: .\models.py:58
+msgid "Municipio"
+msgstr ""
+
+#: .\models.py:59
+msgid "Municipios"
+msgstr ""

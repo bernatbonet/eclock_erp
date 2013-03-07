@@ -1,0 +1,42 @@
+{% load sitetree %}
+<html>
+<head lang="es">
+	<meta charset="UTF-8">
+	<title>{% block titulo %}{% endblock titulo %}</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.multilevel.min.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}cerulean-css/css/bootstrap-responsive.multilevel.min.css">
+	<style type="text/css">
+		@media (max-width: 979px){
+	    	.dropdown-submenu .dropdown-menu{
+	        	display: none;
+	    	}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">	
+		<!--<div class="page-header">
+			<h2><small>Bienvenidos al Taller de Django #pythonIO</small></h2>
+		</div>-->
+		<div class="navbar">
+			<div class="navbar-inner">
+				<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar collapsed" type="button">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="./index.html" class="brand">Taller de Django</a>
+				<div class="nav-collapse collapse" style="height: 0px;">
+					<ul class="nav">
+						{% sitetree_menu from "mytree" include "1" %}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--- <ul class="breadcrumb"></ul> -->
+		<div class="row-fluid">{% block contenido %}{% endblock contenido %}</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}js/bootstrap.js"></script>
+</body>
+</html>

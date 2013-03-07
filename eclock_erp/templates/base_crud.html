@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{% endblock titulo %}
+{% block contenido %}
+<form method="post">{% csrf_token %}
+	{{formulario.as_p}}
+	<input type="submit" value="{% block valor %}{% endblock valor %}" class="btn btn-primary">
+</form>
+{% endblock contenido %}
