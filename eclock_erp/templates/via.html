@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block titulo %}Aplicacion CRUD en Django{% endblock titulo %}
+{% block titulo %}Eclock ERP{% endblock titulo %}
 
 {% block contenido %}
 <!-- Podemos situar un buscador -->
 <table class="table table-striped table-bordered table-condensed">
-	<caption><h5>Lista de vías que podemos utilizar en las direcciones</h5></caption>
+	<caption><h5>Lista de vías que podemos utilizar en las direcciones</h5></caption> <!-- Parámetro que nos indica si mostrar -->
 	<thead>
 		<tr>
 			{% for field in fields %}
@@ -22,9 +22,7 @@
 			<td><small>{{via.cod}}</small></td>
 			<td><small>{{via.desc}}<small></td>
 			<td>
-				<!--<a href="{% url locations.views.editar_via via.id %}" class="btn btn-small">Editar</a>-->
 				<a href="{% url locations.views.editar_via via.id %}" class="btn  btn-small"><i class="icon-edit"></i> Editar</a>
-				<!--<a href="{% url locations.views.eliminar_via via.id %}" class="btn btn-small btn-danger">Eliminar</a>-->
 				<a href="{% url locations.views.eliminar_via via.id %}" class="btn btn-small btn-danger"><i class="icon-remove"></i> Eliminar</a>
 			</td>
 		</tr>
@@ -35,7 +33,6 @@
 		{% endfor %}
 	</tbody>
 </table>
-<!--<a href="{% url locations.views.agregar_via %}" class="btn btn-small btn-primary">Agregar Vía</a>-->
 <a href="{% url locations.views.agregar_via %}" class="btn btn-small btn-primary"><i class="icon-plus"></i> Agregar Vía</a>
 <div class="pagination pagination-centered">
 	<ul>
