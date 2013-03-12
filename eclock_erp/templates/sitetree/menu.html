@@ -1,16 +1,27 @@
 {% load sitetree %}
-	{% for item in sitetree_items %}
+{% for item in sitetree_items %}
 	{% if item.has_children %}
-		<li class="dropdown">
+		{% if not item.primaryMenu %}
+			<li class="dropdown-submenu">
+				<a href="{{ item.url }}">{{ item.title_resolved }}</a>
+				<ul class="dropdown-menu">
+					{% sitetree_children of item for menu template "sitetree/menu.html" %}
+				</ul>
+			</li>
+		{% else %}
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="{{ item.url }}">{{ item.title_resolved }}<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					{% sitetree_children of item for menu template "sitetree/menu.html" %}
+				</ul>
+			</li>
+		{% endif %}
 	{% else %}
 		<li>
+			<a href="{{ item.url }}">{{ item.title_resolved }}</a>
+		</li>
 	{% endif %}
-        <a href="{% sitetree_url for item %}" {% if item.hint %}title="{{ item.hint }}"{% endif %} {% if item.is_current or item.in_current_branch %}class="{{ item.is_current|yesno:"current_item ," }}{{ item.in_current_branch|yesno:"current_branch," }}"{% endif %}>{{ item.title_resolved }}<b class="caret"></b></a>
-		{% if item.has_children %}
-			{% sitetree_children of item for menu template "sitetree/menu.html" %}
-		{% endif %}
-	</li>
-	{% endfor %}
+{% endfor %}
 
 
-
+<!-- {% sitetree_url for item %} -->
