@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^usuario/$', 'locations.views.usuario'),
-    url(r'^via/$', 'locations.views.via'),
+    url(r'^locations/vias/$', 'locations.views.via'),
     url(r'^usuario/add/$', 'locations.views.agregar_usuario'),
     url(r'^via/add$', 'locations.views.agregar_via'),
     url(r'^usuario/borrar/(?P<id_usuario>\d+)$', 'locations.views.eliminar_usuario'),

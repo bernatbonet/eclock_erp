@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{% block titulo %}{% endblock titulo %}</title>
 	<link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.multilevel.min.css">
-	<link rel="stylesheet" href="{{STATIC_URL}}cerulean-css/css/bootstrap-responsive.multilevel.min.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap-responsive.multilevel.min.css">
 	<style type="text/css">
 		@media (max-width: 979px){
 	    	.dropdown-submenu .dropdown-menu{
@@ -13,6 +13,7 @@
 	    	}
 		}
 	</style>
+	{% block extra_css %}{% endblock extra_css %}
 </head>
 <body>
 	<div class="container-fluid">	
@@ -39,5 +40,6 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="{{STATIC_URL}}js/bootstrap.js"></script>
+	{% block extra_js %}{% endblock %}
 </body>
 </html>
