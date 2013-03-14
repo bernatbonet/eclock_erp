@@ -135,8 +135,6 @@ ADMIN_TOOLS_MENU = 'menu.CustomMenu'
 
 INSTALLED_APPS = (
 
-    #'admin_tools.menu',
-
     'debug_toolbar',
 
     'django.contrib.auth',

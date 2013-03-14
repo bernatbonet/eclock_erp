@@ -1,29 +1,39 @@
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from locations.models import Datos, Via, Category, Entry
-from locations.forms import UsuariosForm, ViasForm
+#from django.core import serializers
 from django.http import HttpResponseRedirect
+from django.shortcuts import HttpResponse, render_to_response
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
+from django.utils import simplejson
+from locations.models import Datos, Via
+from locations.forms import ViasForm
 
 
+# Usuarios
 def usuario(request):
     usuarios = Datos.objects.all()
     return render_to_response('usuario.html', {'usuarios': usuarios}, context_instance=RequestContext(request))
 
 
+def usuarios_json(request):
+    return HttpResponse(Datos.objects.all().values(), mimetype="application/json")
+
+
+# Vias
 def via(request):
     vias = Via.objects.all()
     return render_to_response('via.html', {'vias': vias, 'fields': Via._meta.fields}, context_instance=RequestContext(request))
 
 
-def agregar_usuario(request):
-    if request.method == "POST":
-        formulario = UsuariosForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            return HttpResponseRedirect("/usuario/")
-    else:
-        formulario = UsuariosForm()
-    return render_to_response("agregar_usuario.html", {'formulario': formulario}, context_instance=RequestContext(request))
+@csrf_exempt
+def vias_json(request):
+    data = []
+    for item in Via.objects.all():
+        data.append({'cod': item.cod,  'desc': item.desc})
+    sort = []
+    sort.append(['cod', 'asc'])
+    result = {'currentPage': 1, 'totalRows': Via.objects.all().count(), 'sort': sort, 'data': data}
+    json = simplejson.dumps(result)
+    return HttpResponse(json, mimetype="application/json")
 
 
 def agregar_via(request):
@@ -31,36 +41,11 @@ def agregar_via(request):
         formulario = ViasForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            return HttpResponseRedirect("/via/")
+            return HttpResponseRedirect("/locations/vias/")
     else:
         formulario = ViasForm()
 
     return render_to_response("agregar_via.html", {'formulario': formulario}, context_instance=RequestContext(request))
-
-
-def eliminar_usuario(request, id_usuario):
-    usuario = Datos.objects.get(pk=id_usuario)
-    usuario.delete()
-    return HttpResponseRedirect("../")
-
-
-def eliminar_via(request, id_via):
-    usuario = Via.objects.get(pk=id_via)
-    usuario.delete()
-    return HttpResponseRedirect("../")
-
-
-def editar_usuario(request, id_usuario):
-    usuario = Datos.objects.get(pk=id_usuario)
-    if request.method == "POST":
-        formulario = UsuariosForm(request.POST, instance=usuario)
-        if formulario.is_valid:
-            formulario.save()
-            return HttpResponseRedirect("../")
-    else:
-        formulario = UsuariosForm(instance=usuario)
-
-    return render_to_response("editar_usuario.html", {'formulario': formulario}, context_instance=RequestContext(request))
 
 
 def editar_via(request, id_via):
@@ -76,12 +61,7 @@ def editar_via(request, id_via):
     return render_to_response("editar_via.html", {'formulario': formulario}, context_instance=RequestContext(request))
 
 
-def devolver_categoria(request, id_category):
-    categoria = Category.objects.get(pk=id_category)
-    return render_to_response({'category': categoria}, context_instance=RequestContext(request))
-
-
-def devolver_entrada(request, id_entry):
-    entrada = Entry.objects.get(pk=id_entry)
-    categoria = entrada.category
-    return render_to_response({'category': categoria, 'entry': entrada}, context_instance=RequestContext(request))
+def eliminar_via(request, id_via):
+    usuario = Via.objects.get(pk=id_via)
+    usuario.delete()
+    return HttpResponseRedirect("../")

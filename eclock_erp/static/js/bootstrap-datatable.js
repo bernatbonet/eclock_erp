@@ -298,7 +298,7 @@
             if(colprop.sortable && !colprop.custom)
               $cell.click(this, this.sort)
                 .css({'cursor':'pointer'})
-
+            console.log(o);
             for(var i = 0; i < o.sort.length; i++) {
               if(o.sort[i][0] == colprop.field) {
                 if(o.sort[i][1] == "asc") {
