@@ -32,7 +32,7 @@
     this.buttons = [];
 
     this.localStorageId = "datatable_" + (options.id || options.url.replace(/\W/ig, '_'))
-
+    
     // set the defaults for the column options array
     for(column in this.options.columns) {
       // check sortable
@@ -61,6 +61,7 @@
       constructor: DataTable
 
     , render: function () {
+
         var o = this.options
           , $e = this.$element
 
@@ -83,6 +84,7 @@
         // top
         this.$top_details = $("<div></div>")
           .attr("id", "dt-top-details")
+
         // bottom
         this.$bottom_details = $("<div></div>")
           .attr("id", "dt-bottom-details")
@@ -260,7 +262,7 @@
         end = (o.currentPage * o.perPage)
         if(end > o.totalRows) end = o.totalRows
 
-        $('<div class="pull-left"><p>Showing ' + start + ' to ' + end + ' of ' + o.totalRows + ' rows</p></div>')
+        $('<div class="pull-left"><p>Mostrando de ' + start + ' a ' + end + ' de ' + o.totalRows + ' filas</p></div>')
           .prependTo(this.$bottom_details)
       }
 
@@ -292,22 +294,21 @@
           // loop through the columns
           for(column in o.columns) {
             var $cell = this.column(column)
-              , colprop = $cell.data("column_properties")
+              , colprop = $cell.data("column_properties");
 
             // attach the sort click event
             if(colprop.sortable && !colprop.custom)
               $cell.click(this, this.sort)
-                .css({'cursor':'pointer'})
-            console.log(o);
+                .css({'cursor':'pointer'});
             for(var i = 0; i < o.sort.length; i++) {
               if(o.sort[i][0] == colprop.field) {
                 if(o.sort[i][1] == "asc") {
-                  $cell.append($(o.ascending))
-                  colprop.sortOrder = "asc"
+                  $cell.append($(o.ascending));
+                  colprop.sortOrder = "asc";
                 }
                 else if(o.sort[i][1] == "desc") {
-                  $cell.append($(o.descending))
-                  colprop.sortOrder = "desc"
+                  $cell.append($(o.descending));
+                  colprop.sortOrder = "desc";
                 }
               }
             }
@@ -996,7 +997,6 @@
 
   $.fn.datatable.init = function ( options, Constructor, name ) {
     var datatable
-
     if (options === true) {
       return this.data(name);
     } else if (typeof options == 'string') {

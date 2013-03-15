@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Eclock ERP{% endblock titulo %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{STATIC_URL}}css/style.css">
+{% endblock extra_css %}
+{% block contenido %}
+<!-- Podemos situar un buscador -->
+<div id="table-via"></div>
+{% endblock contenido %}
+{% block extra_js %}
+	<script src="{{STATIC_URL}}js/bootstrap-datatable.js"></script>
+	<script>
+		$("#table-via").datatable({
+		  //  debug: true
+		  //, id: undefined
+		  title: ''
+		  , class: 'table table-striped table-bordered table-condensed'
+		  , perPage: 5
+		  , pagePadding: 2
+		  , sort: [['cod', 'desc']]
+		  , filter: {}
+		  , post: {}
+		  , buttons: []
+		  //, sectionHeader: undefined
+		  //, totalRows: 0
+		  //, currentPage: 1
+		  //, showPagination: false
+		  //, showTopPagination: false
+		  //, showHeader: true
+		  //, showFooter: false
+		  //, showFilterRow: false
+		  //, filterModal: undefined
+		  //, allowExport: false
+		  //, allowOverflow: true
+		  //, allowMultipleSort: false
+		  //, toggleColumns: true
+		  , url: 'json'
+		  //, columns: []
+		  //, ascending: '<i class="icon-chevron-up"></i>'
+		  //, descending: '<i class="icon-chevron-down"></i>'
+		  //, rowCallback: undefined
+		  //, tableCallback: undefined
+		  //, headerCallback: undefined
+		  //, footerCallback: undefined
+		  //, tablePreRender: undefined
+		  //, autoLoad: true
+		  , columns: [
+		        {
+		            title: "Codigo",
+		            sortable: true,
+		            field: "cod",
+		            callback: function ( data, cell ) {
+		            	return data[cell.field];
+		            },
+		            filter: true
+		        },
+		        {
+		            title: "Descripcion",
+		            sortable: true,
+		            field: "desc",
+		            callback: function ( data, cell ) {
+		            	return data[cell.field];
+		            },
+		            filter: true
+		        }
+		    ]
+		});
+	</script>
+{% endblock extra_js %}

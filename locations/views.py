@@ -29,9 +29,8 @@ def vias_json(request):
     data = []
     for item in Via.objects.all():
         data.append({'cod': item.cod,  'desc': item.desc})
-    sort = []
-    sort.append(['cod', 'asc'])
-    result = {'currentPage': 1, 'totalRows': Via.objects.all().count(), 'sort': sort, 'data': data}
+    sort = [[]]
+    result = {'totalRows': Via.objects.all().count(), 'sort': sort, 'data': data}
     json = simplejson.dumps(result)
     return HttpResponse(json, mimetype="application/json")
 
