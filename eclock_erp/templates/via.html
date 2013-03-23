@@ -12,7 +12,7 @@
 		<tr>
 			{% for field in fields %}
 				{% if field.name != 'id' %}
-					<th>{{ field.verbose_name }}</th>
+					<th>{{ field.verbose_name }}<div id="{{field.verbose_name}}-icon"></div></th>
 				{% endif %}
 			{% endfor %}
 			<th></th>
@@ -54,5 +54,6 @@
 		$("#table-vias")
 			.tablesorter();
 			//.tablesorterPager({container: $("#pager")});
+		//$("#")
 	</script>
 {% endblock extra_js %}
