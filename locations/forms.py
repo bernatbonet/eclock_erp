@@ -1,5 +1,6 @@
+# -*- encoding: utf-8 -*-
 from django import forms
-from locations.models import Via, Pais, Provincia, Datos
+from locations.models import Via, Pais, Provincia
 
 
 class ViasForm(forms.ModelForm):
@@ -15,8 +16,3 @@ class PaisesForm(forms.ModelForm):
 class ProvinciasForm(forms.ModelForm):
     class Meta:
         model = Provincia
-
-
-class UsuariosForm(forms.ModelForm):
-    class Meta:
-        model = Datos
